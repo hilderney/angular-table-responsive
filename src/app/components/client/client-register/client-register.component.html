@@ -1,0 +1,13 @@
+ <app-spinner *ngIf="spinner"></app-spinner>
+
+<mat-form-field appearance="fill"
+                [hideRequiredMarker]="false">
+  <mat-label> Idade </mat-label>
+  <input matInput formControlName="age"  placeholder="Placeholder">
+  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  <mat-error *ngIf="form.controls.age.touched && form.controls.age.invalid">
+    <span *ngIf="form.controls.age.errors?.required">Idade é obrigatória</span>
+    <span *ngIf="form.controls.age.errors?.minLength">Idade muito curta</span>
+    <span *ngIf="form.controls.age.errors?.maxLength">Idade muito grande</span>
+  </mat-error>
+</mat-form-field>
