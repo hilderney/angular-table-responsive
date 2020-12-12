@@ -15,7 +15,7 @@ const routes: Routes = [
         loadChildren: () => import('./components/client/client-register/client-register.module').then(m => m.ClientRegisterModule),
       },
       {
-        path: 'listar',
+        path: 'list',
         loadChildren: () => import('./components/client/client-list/client-list.module').then(m => m.ClientListModule),
       },
     ]
