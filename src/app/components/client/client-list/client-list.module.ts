@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { MaterialModule } from './../../shared/modules/material.module';
 
 import { ClientListComponent } from './client-list.component';
 import { ClientListRoutes } from './client-list.routing';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     ClientListRoutes,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   declarations: [ClientListComponent]
 })

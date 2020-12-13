@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 import { take } from 'rxjs/operators';
 
-import { Client, ClientList } from './../client.model';
+import { AppComponent } from 'src/app/app.component';
+import { Client } from './../client.model';
 import { ClientListService } from './client-list.service';
 
 @Component({
@@ -11,27 +15,48 @@ import { ClientListService } from './client-list.service';
   templateUrl: './client-list.component.html',
   styleUrls: ['./client-list.component.scss']
 })
-export class ClientListComponent implements OnInit {
+export class ClientListComponent implements AfterViewInit {
+
   spinner: boolean;
-  fakeClientList: any[];
-  client: Client;
-  clientList: ClientList;
+  // fakeClientList: any[];
+  displayedColumns: string[] = ['id', 'name', 'age', 'city'];
+  dataSource = new MatTableDataSource<Client>();
+
+  @ViewChild(MatPaginator, { static: true })
+  paginator!: MatPaginator;
+  @ViewChild(MatSort, { static: true })
+  sort!: MatSort;
 
   constructor(
     private clientlistService: ClientListService,
-
+    private appComponent: AppComponent,
+    private router: Router
   ) {
-    this.spinner = false;
-    this.fakeClientList = this.getFakeList();
-    this.client = { id: 0, name: '', age: 0, city: ''};
-    this.clientList = {clients: []};
-   }
-
-  ngOnInit() {
+    this.spinner = true;
+    this.dataSource = new MatTableDataSource<Client>();
     this.loadClientList();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    // this.fakeClientList = this.getFakeList();
   }
 
-  private loadClientList() {
+  ngAfterViewInit() {
+    this.spinner = false;
+    // this.paginator = this.appComponent.translateTable(this.paginator);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  private loadClientList() : any {
     this.spinner = true;
     this.clientlistService
       .getAll()
@@ -39,12 +64,18 @@ export class ClientListComponent implements OnInit {
       .subscribe(
         (data: any) => {
           console.log(data);
+          this.dataSource = new MatTableDataSource(data);
+          return data;
         },
         (error: any) => {
+          debugger;
           console.log(error);
+          return null;
         },
         () => {
           this.spinner = false;
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
         },
       );
 

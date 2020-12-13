@@ -53,7 +53,7 @@ export class ClientRegisterComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: [this.client ? this.client.id : null],
       name: [this.client ? this.client.name : null, [Validators.required]],
-      age: [this.client ? this.client.age : null, [Validators.required, Validators.minLength(1), Validators.maxLength(3)]],
+      age: [this.client ? this.client.age : null, [Validators.required]],
       city: [this.client ? this.client.city : null, [Validators.required]],
     });
   }
