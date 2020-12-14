@@ -1,4 +1,4 @@
-import { SpinnerComponent } from './components/shared/spinner/spinner.component';
+import { ClientRegisterModule } from './components/client/client-register/client-register.module';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './components/shared/modules/material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     RouterModule,
     MaterialModule,
+    ClientRegisterModule
   ],
   exports: [
 

@@ -1,8 +1,7 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../../shared/modules/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
 
 import { ClientRegisterRoutes } from './client-register.routing';
 import { ClientRegisterComponent } from './client-register.component';
@@ -11,6 +10,8 @@ import { ClientRegisterComponent } from './client-register.component';
   imports: [
     CommonModule,
     ClientRegisterRoutes,
+    ReactiveFormsModule,
+    FormsModule,
     MaterialModule
   ],
   declarations: [

@@ -2,20 +2,21 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { take } from 'rxjs/operators';
+
 import Swal from 'sweetalert2';
 
 import { Client } from './../client.model';
 import { ClientListService } from './client-list.service';
-import { TranslateTable } from './../../shared/helpers/translate-table';
+import { TranslateTable } from '../../shared/helpers/tables';
 
 
 @Component({
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
-  styleUrls: ['./client-list.component.scss']
+  styleUrls: ['./client-list.component.sass']
 })
 export class ClientListComponent implements AfterViewInit {
 
@@ -31,6 +32,7 @@ export class ClientListComponent implements AfterViewInit {
 
   constructor(
     private clientlistService: ClientListService,
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
     this.spinner = true;
@@ -78,13 +80,13 @@ export class ClientListComponent implements AfterViewInit {
   }
 
   editClient(id: number){
-    const clientSelected = this.dataSource.data.find(x => x.id = id);
-    // send Client to edit page
-
-    // Swal.fire({
-    //      title: 'Auto close alert!',
-    //      text: 'I will close in 2 seconds.',
-    //      timer: 2000
-    // });
+    const clientSelected = this.dataSource.data.find(x => x.id === id);
+    this.router.navigate([
+      'client/register',
+      clientSelected!.id,
+      clientSelected!.name,
+      clientSelected!.age,
+      clientSelected!.city
+    ]);
   }
 }
