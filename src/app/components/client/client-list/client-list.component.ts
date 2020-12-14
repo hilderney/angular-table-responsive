@@ -41,9 +41,11 @@ export class ClientListComponent implements AfterViewInit {
     this.loadClientList();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.alertCaseUpdatedCompleted();
   }
 
   ngAfterViewInit() {
+
     this.paginator = this.translateTable.translate(this.paginator);
     this.dataSource.sort = this.sort;
   }
@@ -64,7 +66,6 @@ export class ClientListComponent implements AfterViewInit {
       .pipe(take(1))
       .subscribe(
         (data: any) => {
-          console.log(data);
           this.dataSource = new MatTableDataSource(data);
         },
         (error: any) => {
@@ -88,5 +89,21 @@ export class ClientListComponent implements AfterViewInit {
       clientSelected!.age,
       clientSelected!.city
     ]);
+  }
+
+  private alertCaseUpdatedCompleted() {
+    if (this.activatedRoute.snapshot.params['message?']) {
+      Swal.fire({
+        'html': this.activatedRoute.snapshot.params['message?'],
+        'icon': 'success',
+        'target': 'body',
+        'position': 'top-start',
+        'timer': 2500,
+        'timerProgressBar': true,
+        'showConfirmButton': false,
+        'showCloseButton': true
+      });
+
+    }
   }
 }

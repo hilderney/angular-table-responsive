@@ -1,7 +1,7 @@
 import { ClientRegisterService } from './client-register.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Client } from '../client.model';
 import { take } from 'rxjs/operators';
@@ -22,6 +22,7 @@ export class ClientRegisterComponent implements OnInit {
     private clientRegisterService: ClientRegisterService,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.spinner = false;
     this.model = new Client();
@@ -34,19 +35,19 @@ export class ClientRegisterComponent implements OnInit {
   }
 
   save(){
-
+    this.editClient(this.model.id, this.model);
   }
 
   private editClient(clientId: number, client: Client) {
     this.spinner = true;
     console.log(this.clientForm);
-    return null;
     this.clientRegisterService
       .update(clientId, client)
       .pipe(take(1))
       .subscribe(
         (data: any) => {
           console.log(data);
+          this.router.navigate(['client/list', `Cliente <span class="dark">${this.model.name}</span> atualizado com sucesso!`]);
         },
         (error: any) => {
           console.log(error);

@@ -16,6 +16,6 @@ export class CrudService<T> {
   }
 
   update(id: number, record: T): Observable<Response> {
-    return this.http.put<Response>(`https://${this.baseUrl}/'}/${id}`, record);
+    return this.http.put<Response>(`https://${this.baseUrl}/${id}`, record);
   }
 }

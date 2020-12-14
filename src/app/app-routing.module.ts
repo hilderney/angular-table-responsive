@@ -18,6 +18,10 @@ const routes: Routes = [
         path: 'list',
         loadChildren: () => import('./components/client/client-list/client-list.module').then(m => m.ClientListModule),
       },
+      {
+        path: 'list/:message?',
+        loadChildren: () => import('./components/client/client-list/client-list.module').then(m => m.ClientListModule),
+      },
     ]
   }
 ];
