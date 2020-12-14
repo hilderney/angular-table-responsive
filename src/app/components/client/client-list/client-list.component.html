@@ -1,3 +1,5 @@
+<app-spinner *ngIf="spinner"></app-spinner>
+
 <mat-form-field>
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
@@ -28,6 +30,14 @@
     <ng-container matColumnDef="city">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
       <td mat-cell *matCellDef="let row">{{row.city}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-flat-button color="primary" (click)="editClient(row.id)"> Edit </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

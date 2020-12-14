@@ -1,3 +1,4 @@
+import { SpinnerComponent } from './components/shared/spinner/spinner.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './components/shared/modules/material.module';
 import { BrowserModule } from '@angular/platform-browser';
