@@ -1,14 +1,25 @@
 .client-register-content
+  margin: 0
   padding: 0
   padding-top: 32px
 
 mat-form-field
-  width: 100%
+  width: calc(50% - 16px)
+  margin: 4px 8px
+  @media (max-width: 768px)
+    width: 100%
+    margin: 4px 0px
+
+mat-error
+  span
+    display: inline-block
+    margin-bottom: 8px
 
 .dark
   color: #669
   font-weight: 700
 
 button
-  margin-left: 14px
+  margin-right: 14px
   float: right
+

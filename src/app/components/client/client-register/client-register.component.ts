@@ -72,10 +72,9 @@ export class ClientRegisterComponent implements OnInit {
   private initializeForm() {
     this.clientForm = this.formBuilder.group({
       id: [this.model.id ? this.model.id : null],
-      name: [this.model.name ? this.model.name : null, [Validators.required]],
+      name: [this.model.name ? this.model.name : null],
       age: [this.model.age ? this.model.age : null, [Validators.required, Validators.pattern('^[0-9]{1,3}$')]],
-      city: [this.model.city ? this.model.city : null, [Validators.required]],
+      city: [this.model.city ? this.model.city : null],
     });
   }
-
 }

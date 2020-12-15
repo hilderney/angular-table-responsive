@@ -1,7 +1,7 @@
 <div class="client-list-wrapper">
   <app-spinner *ngIf="spinner"></app-spinner>
 
-  <mat-form-field>
+  <mat-form-field id="filter">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
   </mat-form-field>

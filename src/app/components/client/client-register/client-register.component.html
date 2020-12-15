@@ -18,9 +18,8 @@
         <mat-label> Idade </mat-label>
         <input matInput formControlName="age" placeholder="Age" ng-pattern="onlyNumbers">
         <mat-error *ngIf="clientForm.controls.age.touched && clientForm.controls.age.invalid">
-          <span *ngIf="clientForm.controls.age.errors?.required">Idade é obrigatória</span>
-          <span *ngIf="clientForm.controls.age.errors?.minLength">Idade muito curta</span>
-          <span *ngIf="clientForm.controls.age.errors?.maxLength">Idade muito grande</span>
+          <span *ngIf="clientForm.controls.age.hasError('required')"> Idade é obrigatória </span>
+          <span *ngIf="clientForm.controls.age.hasError('pattern')"> Idade deve ter entre 1 e 3 digitos </span>
         </mat-error>
       </mat-form-field>
 
