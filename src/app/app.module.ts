@@ -25,7 +25,6 @@ import { AppComponent } from './app.component';
     ClientRegisterModule
   ],
   exports: [
-
   ],
   providers: [],
   bootstrap: [AppComponent]

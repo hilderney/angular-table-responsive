@@ -8,6 +8,7 @@ import { MaterialModule } from './../../shared/modules/material.module';
 
 import { ClientListComponent } from './client-list.component';
 import { ClientListRoutes } from './client-list.routing';
+import { CoreModule } from '../../shared/modules/core.module';
 
 
 @NgModule({
@@ -16,11 +17,11 @@ import { ClientListRoutes } from './client-list.routing';
     ClientListRoutes,
     ReactiveFormsModule,
     MaterialModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    CoreModule
   ],
   declarations: [
     ClientListComponent,
-    SpinnerComponent,
   ]
 })
 export class ClientListModule { }

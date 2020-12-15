@@ -1,3 +1,5 @@
+import { CoreModule } from './../../shared/modules/core.module';
+import { SpinnerComponent } from './../../shared/spinner/spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../../shared/modules/material.module';
 import { NgModule } from '@angular/core';
@@ -12,7 +14,8 @@ import { ClientRegisterComponent } from './client-register.component';
     ClientRegisterRoutes,
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    CoreModule
   ],
   declarations: [
     ClientRegisterComponent,

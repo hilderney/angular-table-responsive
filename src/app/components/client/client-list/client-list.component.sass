@@ -1,3 +1,6 @@
+.client-list-wrapper
+  padding-top: 32px
+
 table
   width: 100%
 
@@ -22,6 +25,8 @@ td.mat-column-star
     box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)
     background-color: #fff
     border-radius: 3px
+    margin: 3px
+    padding: 3px
     + .mat-row
       margin-top: 24px
 
@@ -53,23 +58,45 @@ tbody
       box-sizing: border-box
 
 .mat-cell
+  &:first-child
+    color: #3f51b5
+    font-weight: 500
   @media (max-width: 768px)
     display: block
-    width: 100%
-    padding: 0 16px
-    margin: 16px 0
+    padding: 8px 16px
+    margin: 4px 8px
     border: 0 none
+    border-bottom-width: 1px
+    border-bottom-style: solid
+    border-bottom-color: #DDD
+    &:last-child
+      border: 0 none
     &:first-child
-      padding: 0 48px 0 16px
+      padding: 8px 48px 8px 16px
+      background-color: #DDD
+      color: #3f51b5
+      font-weight: 500
+      border-top-left-radius: 3px
+      border-top-right-radius: 3px
       a
         font-size: 20px
         color: inherit
       &:before
         display: none
+      .mobile-label
+        color: #3f51b5
+        font-weight: 700
     &.m-card-sub-title
-      margin-top: -8px
-      padding: 0 48px 0 16px
+      padding: 8px 48px 8px 16px
       color: rgba(0,0,0,.54)
+    span
+      background-color: transparent
+      margin: -4px 0
+      padding: 4px 4px
+    button
+      display: inline-block
+      width: 100%
+
 
 .has_label_on_mobile
   @media (max-width: 768px)

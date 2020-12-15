@@ -97,7 +97,7 @@ export class ClientListComponent implements AfterViewInit {
         'html': this.activatedRoute.snapshot.params['message?'],
         'icon': 'success',
         'target': 'body',
-        'position': 'top-start',
+        'position': 'top-end',
         'timer': 2500,
         'timerProgressBar': true,
         'showConfirmButton': false,

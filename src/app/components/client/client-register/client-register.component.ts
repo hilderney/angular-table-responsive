@@ -10,7 +10,7 @@ import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-client-register',
   templateUrl: './client-register.component.html',
-  styleUrls: ['./client-register.component.scss']
+  styleUrls: ['./client-register.component.sass']
 })
 export class ClientRegisterComponent implements OnInit {
 
@@ -36,6 +36,10 @@ export class ClientRegisterComponent implements OnInit {
 
   save(){
     this.editClient(this.model.id, this.model);
+  }
+
+  cancel(){
+    this.router.navigate(['client/list']);
   }
 
   private editClient(clientId: number, client: Client) {
@@ -69,7 +73,7 @@ export class ClientRegisterComponent implements OnInit {
     this.clientForm = this.formBuilder.group({
       id: [this.model.id ? this.model.id : null],
       name: [this.model.name ? this.model.name : null, [Validators.required]],
-      age: [this.model.age ? this.model.age : null, [Validators.required, Validators.minLength(1), Validators.maxLength(3)]],
+      age: [this.model.age ? this.model.age : null, [Validators.required, Validators.pattern('^[0-9]{1,3}$')]],
       city: [this.model.city ? this.model.city : null, [Validators.required]],
     });
   }
