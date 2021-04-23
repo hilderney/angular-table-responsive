@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainSidebarComponent } from './components/shared/sidebar/main-sidebar/main-sidebar.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainSidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     RouterModule,
     MaterialModule,
-    ClientRegisterModule
+    ClientRegisterModule,
+
   ],
   exports: [
   ],
